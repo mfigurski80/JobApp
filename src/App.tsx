@@ -2,14 +2,7 @@ import { useState, useEffect } from 'react'
 import reactLogo from './assets/react.svg'
 import './App.css'
 
-type JobAppStatus = 'applied' | 'interview' | 'offer' | 'rejected'
-
-type JobApplication = {
-  name: string
-  source: string
-  date: string
-  status: JobAppStatus 
-}
+import { JobApplication, JobAppStatus } from './types.d.ts'
 
 function App() {
   const [stored, setStored] = useState<JobApplication[]>(
