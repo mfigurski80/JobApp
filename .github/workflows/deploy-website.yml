@@ -23,7 +23,7 @@ jobs:
       - name: Install surge, build and fire deployment
         uses: actions/setup-node@v1
         with:
-          node-version: 8
+          node-version: 19
       - run: npm install
       - run: npm run build
       - run: npm install -g surge
