@@ -2,23 +2,21 @@ import { useState, useEffect } from 'react'
 import reactLogo from './assets/react.svg'
 import './App.css'
 
+import JobAppForm from './JobAppForm'
+
 import { JobApplication, JobAppStatus } from './types.d.ts'
 
 function App() {
   const [stored, setStored] = useState<JobApplication[]>(
     JSON.parse(localStorage.getItem('stored') || '[]'))
 
-  const [newInput, setNewInput] = useState<JobApplication>({
-    name: '',
-    source: '',
-    date: '',
-    status: 'applied'
-  })
-
   useEffect(() => {
     localStorage.setItem('stored', JSON.stringify(stored))
   }, [stored])
 
+  const onSubmit = (newJobApp: JobApplication) => {
+    setStored([...stored, newJobApp])
+  }
 
   return (
     <div className="App">
@@ -26,14 +24,9 @@ function App() {
         <h2 className="logo">🎂</h2> 
       </div>
       <h1>Job App Register</h1>
-      <div className="card">
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <h4>(Have {stored.length} Stored)</h4>
+      <div className="card"> </div>
+      <JobAppForm onSubmit={onSubmit}/> 
     </div>
   )
 }
