@@ -4,7 +4,7 @@ import './App.css'
 
 import JobAppForm from './JobAppForm'
 
-import { JobApplication, JobAppStatus } from './types.d.ts'
+import { JobApplication, JobAppStatus } from './types.d'
 
 function App() {
   const [stored, setStored] = useState<JobApplication[]>(
