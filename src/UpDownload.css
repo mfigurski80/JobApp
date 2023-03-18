@@ -1,0 +1,11 @@
+#updown-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+#updown-container button, 
+#updown-container input {
+  padding: 10px 14px;
+  background: none;
+}

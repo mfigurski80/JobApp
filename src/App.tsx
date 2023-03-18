@@ -3,6 +3,7 @@ import reactLogo from './assets/react.svg'
 import './App.css'
 
 import JobAppForm from './JobAppForm'
+import UpDownload from './UpDownload'
 
 import { JobApplication, JobAppStatus } from './types.d'
 
@@ -27,6 +28,7 @@ function App() {
       <h4>(Have {stored.length} Stored)</h4>
       <div className="card"> </div>
       <JobAppForm onSubmit={onSubmit}/> 
+      <UpDownload content={stored} setContent={setStored}/>
     </div>
   )
 }
