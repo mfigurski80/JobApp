@@ -4,6 +4,7 @@ import './App.css'
 
 import JobAppForm from './JobAppForm'
 import UpDownload from './UpDownload'
+import Emoji from './Emoji'
 
 import { JobApplication, JobAppStatus } from './types.d'
 
@@ -22,7 +23,7 @@ function App() {
   return (
     <div className="App">
       <div>
-        <h2 className="logo">🎂</h2> 
+        <Emoji count={stored.length}/>
       </div>
       <h1>Job App Register</h1>
       <h4>(Have {stored.length} Stored)</h4>
