@@ -1,15 +1,16 @@
-import * as xlsx from 'xlsx';
-import { AiOutlineDownload, AiOutlineUpload } from 'react-icons/ai';
+import { JobApplication } from './types.d'
 
-// import scoped css
+import * as xlsx from 'xlsx';
+import { AiOutlineDownload } from 'react-icons/ai';
+
 import './UpDownload.css'
 
 type UpDownloadProps = {
-  content: string;
-  setContent: (content: string) => void;
+  content: JobApplication[];
+  setContent: (n: JobApplication[]) => void
 }
 
-export default function UpDownload({ content, setContent }) {
+export default function UpDownload({ content }: UpDownloadProps) {
 
   const handleDownload = () => {
     const wb = xlsx.utils.book_new()
