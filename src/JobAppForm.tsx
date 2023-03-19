@@ -1,9 +1,12 @@
 import { useState } from 'react';
-import { JobAppStatus, JobApplication } from './types.d';
+import { JobApplication } from './types.d';
 import './JobAppForm.css';
 
-function defaultJobApp(): Partial<JobApplication> {
+function defaultJobApp(): JobApplication {
   return {
+    source: '',
+    name: '',
+    company: '',
     status: 'applied',
     date: new Date().toISOString(),
   };
@@ -18,7 +21,7 @@ export default function JobAppForm({ onSubmit }: { onSubmit: (jobApp: JobApplica
       ...defaultJobApp(),
       ...job,
     }
-    setJob(defaultJobApp() as JobApplication)
+    setJob(defaultJobApp())
     onSubmit(application)
   }
 
