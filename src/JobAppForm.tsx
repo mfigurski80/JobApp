@@ -1,5 +1,9 @@
 import { useState } from 'react';
+
+import ConfettiExplosion from 'react-confetti-explosion';
 import { JobApplication } from './types.d';
+
+
 import './JobAppForm.css';
 
 function defaultJobApp(): JobApplication {
@@ -14,6 +18,7 @@ function defaultJobApp(): JobApplication {
 
 export default function JobAppForm({ onSubmit }: { onSubmit: (jobApp: JobApplication) => void }) {
   const [job, setJob] = useState<JobApplication>(defaultJobApp() as JobApplication)
+  const [showConfetti, setShowConfetti] = useState(false)
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -22,6 +27,8 @@ export default function JobAppForm({ onSubmit }: { onSubmit: (jobApp: JobApplica
       ...job,
     }
     setJob(defaultJobApp())
+    setShowConfetti(true)
+    setTimeout(() => setShowConfetti(false), confettiProps.duration)
     onSubmit(application)
   }
 
@@ -39,7 +46,15 @@ export default function JobAppForm({ onSubmit }: { onSubmit: (jobApp: JobApplica
       <input type="text" id="jobCompany" name="jobCompany" placeholder="Sarenka Pole Ac."
         value={job.company} onChange={e => setJob({...job, company: e.target.value })}
       />
-      <button type="submit">Submit</button>
+      <button type="submit">
+        Submit 
+        {showConfetti && <ConfettiExplosion {...confettiProps} />}
+      </button>
     </form>
   )
+}
+
+const confettiProps = {
+  duration: 2500,
+  colors: ['#a864fd', '#ff718d', '#fd9f9a'],
 }
