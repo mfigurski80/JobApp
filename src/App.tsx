@@ -17,6 +17,8 @@ function App() {
 
   const onSubmit = (newJobApp: JobApplication) => {
     setStored([...stored, newJobApp])
+    if ((stored.length + 1) % 50 === 0)
+      document.documentElement.classList.add('party')
   }
 
   return (
