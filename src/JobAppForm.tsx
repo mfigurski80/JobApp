@@ -1,7 +1,7 @@
 import { useState } from 'react';
+import type { JobApplication } from './types.d';
 
 import ConfettiExplosion from 'react-confetti-explosion';
-import { JobApplication } from './types.d';
 
 
 import './JobAppForm.css';

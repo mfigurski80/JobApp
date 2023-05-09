@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
+import mixpanel from 'mixpanel-browser';
+import type { JobApplication } from './types.d'
 import './App.css'
-import { JobApplication } from './types.d'
 
 import JobAppForm from './JobAppForm'
 import UpDownload from './UpDownload'
@@ -19,6 +20,7 @@ function App() {
     setStored([...stored, newJobApp])
     if ((stored.length + 1) % 50 === 0)
       document.documentElement.classList.add('party')
+    mixpanel.track('Job App Submitted', { ...newJobApp, stored: stored.length })
   }
 
   return (
